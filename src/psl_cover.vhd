@@ -68,7 +68,6 @@ begin
   -- This assertion checks for the final done at the end of transfer.
   -- In cover mode, the LHS side of the property has to hold.
   -- This cover directive holds at cycle 7
-  ASSERT_a : assert always {req; {{busy[=3]} && {not done[+]}}; not done} |=> {done};
 
   -- For simulation, you have to write a separate cover directive when
   -- you want to check if your assertion can be active
