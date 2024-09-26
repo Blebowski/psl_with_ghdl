@@ -13,7 +13,7 @@ all: ${psl_tests}
 	nvc --std=$(VHD_STD) --work=lib_$@ -a  ../src/pkg.vhd ../src/sequencer.vhd ../src/hex_sequencer.vhd
 	nvc --std=$(VHD_STD) --work=lib_$@ -a --psl ../src/$@.vhd
 	nvc --std=$(VHD_STD) --work=lib_$@ -a tb_tops/$@/testbench.vhd
-	nvc --std=$(VHD_STD) --work=lib_$@ -e tb_$@
+	nvc --std=$(VHD_STD) --work=lib_$@ -e --cover tb_$@
 	nvc --std=$(VHD_STD) --work=lib_$@ -r tb_$@ --wave=$@
 
 tb_tops/%/testbench.vhd: template.vhd
@@ -23,4 +23,5 @@ tb_tops/%/testbench.vhd: template.vhd
 
 clean:
 	rm -rf tb_tops
-	rm -rf work
+	rm -rf lib_*
+	rm -rf psl_*
