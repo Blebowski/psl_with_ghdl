@@ -29,18 +29,18 @@ begin
 
   -- Covers a transfer request
   -- This cover directive holds at cycle 1
-  COVER_0_c : cover {req}
-    report "Transfer requested";
+  -- psl COVER_0_c : cover {req}
+  --    report "Transfer requested";
 
   -- Covers started processing of transfers
   -- This cover directive holds at cycle 2
-  COVER_1_c : cover {req; {{busy[=1]} && {not done[+]}}}
-    report "Transfer in progress";
+  -- psl COVER_1_c : cover {req; {{busy[=1]} && {not done[+]}}}
+  --     report "Transfer in progress";
 
   -- Covers each transfer with length in range 1 to 8
   -- This cover directive holds at cycle 8
-  COVER_2_c : cover {req; {{busy[=1 to 8]} && {not done[+]}}; done}
-    report "Transfer done";
+  -- psl COVER_2_c : cover {req; {{busy[=1 to 8]} && {not done[+]}}; done}
+  --  report "Transfer done";
 
   -- Cover transfers with length in range 1 to 8 separately
   cover_transfer_lengths : for i in 1 to 8 generate
@@ -53,14 +53,14 @@ begin
   -- Workaround: writing separate cover directives for
   -- each length, very tedious
   -- Only length 3 holds at cycle 8, all others not
-  COVER_LENGTH_1_c : cover {req; {{busy[=1]} && {not done[+]}}; done};
-  COVER_LENGTH_2_c : cover {req; {{busy[=2]} && {not done[+]}}; done};
-  COVER_LENGTH_3_c : cover {req; {{busy[=3]} && {not done[+]}}; done};
-  COVER_LENGTH_4_c : cover {req; {{busy[=4]} && {not done[+]}}; done};
-  COVER_LENGTH_5_c : cover {req; {{busy[=5]} && {not done[+]}}; done};
-  COVER_LENGTH_6_c : cover {req; {{busy[=6]} && {not done[+]}}; done};
-  COVER_LENGTH_7_c : cover {req; {{busy[=7]} && {not done[+]}}; done};
-  COVER_LENGTH_8_c : cover {req; {{busy[=8]} && {not done[+]}}; done};
+  -- psl COVER_LENGTH_1_c : cover {req; {{busy[=1]} && {not done[+]}}; done};
+  -- psl COVER_LENGTH_2_c : cover {req; {{busy[=2]} && {not done[+]}}; done};
+  -- psl COVER_LENGTH_3_c : cover {req; {{busy[=3]} && {not done[+]}}; done};
+  -- psl COVER_LENGTH_4_c : cover {req; {{busy[=4]} && {not done[+]}}; done};
+  -- psl COVER_LENGTH_5_c : cover {req; {{busy[=5]} && {not done[+]}}; done};
+  -- psl COVER_LENGTH_6_c : cover {req; {{busy[=6]} && {not done[+]}}; done};
+  -- psl COVER_LENGTH_7_c : cover {req; {{busy[=7]} && {not done[+]}}; done};
+  -- psl COVER_LENGTH_8_c : cover {req; {{busy[=8]} && {not done[+]}}; done};
 
   -- BTW: GHDL synthesis creates a cover directive for each assert directive
   -- which is really nice. So you can run SymbiYosys in cover mode
@@ -73,8 +73,8 @@ begin
   -- For simulation, you have to write a separate cover directive when
   -- you want to check if your assertion can be active
   -- Simply use the LHS of the asserts property
-  COVER_A : cover {req; {{busy[=3]} && {not done[+]}}; not done}
-    report "Transfer of length 3";
+  -- psl COVER_A : cover {req; {{busy[=3]} && {not done[+]}}; not done}
+  --    report "Transfer of length 3";
 
   -- Stop simulation after longest running sequencer is finished
   -- Simulation only code by using pragmas
