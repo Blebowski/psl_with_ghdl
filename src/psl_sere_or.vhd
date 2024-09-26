@@ -33,7 +33,7 @@ begin
 
 
   -- All is sensitive to rising edge of clk
-  default clock is rising_edge(clk);
+  -- psl default clock is rising_edge(clk);
 
   -- Transfer started by req2 with 2 valids has to be finished by done
   -- This assertion holds

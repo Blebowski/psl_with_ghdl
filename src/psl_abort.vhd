@@ -27,7 +27,7 @@ begin
   --  D :                         _|________
 
   -- All is sensitive to rising edge of clk
-  default clock is rising_edge(clk);
+  -- psl default clock is rising_edge(clk);
 
   -- This assertion doesn't hold at cycle 4
   WITHOUT_ABORT_a : assert (always a -> next (b before a));

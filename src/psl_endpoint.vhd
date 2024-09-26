@@ -27,7 +27,7 @@ begin
 
 
   -- All is sensitive to rising edge of clk
-  default clock is rising_edge(clk);
+  -- psl default clock is rising_edge(clk);
 
   -- only endpoint in psl comment works
   -- psl endpoint ENDPOINT_1_e is {a; b[*3]; c};

@@ -26,7 +26,7 @@ begin
 
 
   -- All is sensitive to rising edge of clk
-  default clock is rising_edge(clk);
+  -- psl default clock is rising_edge(clk);
 
   -- Occurrance of a SERE during another SERE
   -- valid has to hold 3 times during busy holds and done does't hold

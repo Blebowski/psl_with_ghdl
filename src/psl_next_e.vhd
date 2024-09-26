@@ -49,7 +49,7 @@ begin
 
 
   -- All is sensitive to rising edge of clk
-  default clock is rising_edge(clk);
+  -- psl default clock is rising_edge(clk);
 
   -- This assertion holds
   NEXT_0_a : assert always (a -> next_e[3 to 5] (b));

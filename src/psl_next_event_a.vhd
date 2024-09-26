@@ -29,7 +29,7 @@ begin
 
 
   -- All is sensitive to rising edge of clk
-  default clock is rising_edge(clk);
+  -- psl default clock is rising_edge(clk);
 
   -- Check for one possible value of b
   -- Both assertions hold (see ghdl/ghdl#2157)

@@ -26,7 +26,7 @@ begin
 
 
   -- All is sensitive to rising edge of clk
-  default clock is rising_edge(clk);
+  -- psl default clock is rising_edge(clk);
 
   -- Length matching AND two SERE
   -- valid has to hold 3 times between req & done.

@@ -25,7 +25,7 @@ begin
 
 
   -- All is sensitive to rising edge of clk
-  default clock is rising_edge(clk);
+  -- psl default clock is rising_edge(clk);
 
   -- This assertion holds
   FELL_0_a : assert always (fell(a) -> c);

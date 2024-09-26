@@ -28,7 +28,7 @@ begin
 
 
   -- All is sensitive to rising edge of clk
-  default clock is rising_edge(clk);
+  -- psl default clock is rising_edge(clk);
 
   -- Address phase sequence
   sequence a_phase is {avalid; busy[->3]; adone};

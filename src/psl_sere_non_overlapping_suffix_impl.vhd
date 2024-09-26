@@ -24,7 +24,7 @@ begin
 
 
   -- All is sensitive to rising edge of clk
-  default clock is rising_edge(clk);
+  -- psl default clock is rising_edge(clk);
 
   -- This assertion holds
   SERE_0_a : assert always {a; a} |=> {not a};

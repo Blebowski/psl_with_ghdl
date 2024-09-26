@@ -37,7 +37,7 @@ begin
 
 
   -- All is sensitive to rising edge of clk
-  default clock is rising_edge(clk);
+  -- psl default clock is rising_edge(clk);
 
   -- Simple SERE with repetitions done manual without operators
   -- This assertion holds

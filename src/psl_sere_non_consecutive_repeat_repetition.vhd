@@ -25,7 +25,7 @@ begin
 
 
   -- All is sensitive to rising edge of clk
-  default clock is rising_edge(clk);
+  -- psl default clock is rising_edge(clk);
 
   -- Non consecutive repetition of 3 cycles with possible padding
   -- busy has to hold on 3 cycles between req & done

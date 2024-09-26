@@ -25,7 +25,7 @@ begin
 
 
   -- All is sensitive to rising edge of clk
-  default clock is rising_edge(clk);
+  -- psl default clock is rising_edge(clk);
 
   -- Covers a transfer request
   -- This cover directive holds at cycle 1

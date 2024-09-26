@@ -25,7 +25,7 @@ begin
 
 
   -- All is sensitive to rising edge of clk
-  default clock is rising_edge(clk);
+  -- psl default clock is rising_edge(clk);
 
   -- a should always be high 
   ANY_ASSUME_0_a : assume always a;

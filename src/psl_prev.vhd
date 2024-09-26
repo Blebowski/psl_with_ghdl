@@ -33,7 +33,7 @@ begin
 
 
   -- All is sensitive to rising edge of clk
-  default clock is rising_edge(clk);
+  -- psl default clock is rising_edge(clk);
 
   -- This assertion holds
   PREV_0_a : assert always (valid -> a = prev(a));

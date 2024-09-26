@@ -27,7 +27,7 @@ begin
 
 
   -- All is sensitive to rising edge of clk
-  default clock is rising_edge(clk);
+  -- psl default clock is rising_edge(clk);
 
   -- Non length matching AND three SERE
   -- Each of done0, done1 & done2 has to hold a cycle after

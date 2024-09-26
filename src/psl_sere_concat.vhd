@@ -28,7 +28,7 @@ begin
 
 
   -- All is sensitive to rising edge of clk
-  default clock is rising_edge(clk);
+  -- psl default clock is rising_edge(clk);
 
   -- SERE concatenation operator
   -- RHS starts at one cycle cycle that the LHS ends
