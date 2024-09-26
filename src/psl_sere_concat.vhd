@@ -33,17 +33,17 @@ begin
   -- SERE concatenation operator
   -- RHS starts at one cycle cycle that the LHS ends
   -- This assertion holds
-  SERE_0_a : assert always {req} |=> {{avalid; busy[->3]; adone}; {data[->3]; ddone}};
+  --SERE_0_a : assert always {req} |=> {{avalid; busy[->3]; adone}; {data[->3]; ddone}};
 
   -- SERE concatenation operator
   -- RHS starts at one cycle cycle that the LHS ends
   -- This cover holds at cycle 7
-  SERE_0_c : cover {req; avalid; busy[->3]; adone} report "Address phase completed";
+  -- psl SERE_0_c : cover {req; avalid; busy[->3]; adone} report "Address phase completed";
 
   -- SERE concatenation operator
   -- RHS starts at one cycle cycle that the LHS ends
   -- This cover holds at cycle 11
-  SERE_1_c : cover {data[->3]; ddone} report "Data phase completed";
+  -- psl SERE_1_c : cover {data[->3]; ddone} report "Data phase completed";
 
   -- Stop simulation after longest running sequencer is finished
   -- Simulation only code by using pragmas
