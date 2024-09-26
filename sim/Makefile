@@ -9,16 +9,18 @@ VHD_STD := 08
 
 all: ${psl_tests}
 
-%: ../src/%.vhd ../src/pkg.vhd ../src/sequencer.vhd ../src/hex_sequencer.vhd work/%/testbench.vhd
-	ghdl -a --std=$(VHD_STD) --workdir=work/$@ ../src/pkg.vhd ../src/sequencer.vhd ../src/hex_sequencer.vhd
-	ghdl -a --std=$(VHD_STD) -fpsl --workdir=work/$@ ../src/$@.vhd
-	ghdl -a --std=$(VHD_STD) --workdir=work/$@ work/$@/testbench.vhd
-	ghdl -e --std=$(VHD_STD) -fpsl --workdir=work/$@ -o work/$@/tb_$@ tb_$@
-	cd work/$@; ghdl -r --std=$(VHD_STD) -fpsl tb_$@ --wave=$@.ghw --psl-report=$@_psl_coverage.json
+%: ../src/%.vhd ../src/pkg.vhd ../src/sequencer.vhd ../src/hex_sequencer.vhd tb_tops/%/testbench.vhd
+	nvc --std=$(VHD_STD) --work=lib_$@ -a  ../src/pkg.vhd ../src/sequencer.vhd ../src/hex_sequencer.vhd
+	nvc --std=$(VHD_STD) --work=lib_$@ -a --psl ../src/$@.vhd
+	nvc --std=$(VHD_STD) --work=lib_$@ -a tb_tops/$@/testbench.vhd
+	nvc --std=$(VHD_STD) --work=lib_$@ -e tb_$@
+	nvc --std=$(VHD_STD) --work=lib_$@ -r tb_$@ --wave=$@
 
-work/%/testbench.vhd: template.vhd
-	mkdir -p work; mkdir -p $(dir $@)
-	sed 's/__DUT__/$(subst /,,$(subst work,,$(dir $@)))/g' $< > $@
+tb_tops/%/testbench.vhd: template.vhd
+	mkdir -p tb_tops;
+	mkdir -p $(dir $@)
+	sed 's/__DUT__/$(subst /,,$(subst tb_tops,,$(dir $@)))/g' $< > $@
 
 clean:
+	rm -rf tb_tops
 	rm -rf work
