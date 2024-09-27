@@ -15,6 +15,9 @@ architecture psl of psl_abort is
 
   signal a, b, c, d : std_logic;
 
+  -- All is sensitive to rising edge of clk
+  default clock is rising_edge(clk);
+
 begin
 
   -- Creating an abort signal which is asynchronously set & reset
@@ -26,9 +29,6 @@ begin
   SEQ_C : sequencer generic map ("-_________") port map (clk, c);
   --  D :                         _|________
 
-  -- All is sensitive to rising edge of clk
-  -- psl default clock is rising_edge(clk);
-
   -- This assertion doesn't hold at cycle 4
   WITHOUT_ABORT_a : assert (always a -> next (b before a));
 
@@ -39,7 +39,7 @@ begin
   -- GHDL seemed to implement abort as sync_abort instead of async_abort
   -- See 1850-2010 6.2.1.5.1 abort, async_abort and sync_abort
   -- In formal this assertion fails at cycle 4 as d is 0 all the time
-  -- Is fixed now, see issue ghdl/ghdl#1654 
+  -- Is fixed now, see issue ghdl/ghdl#1654
   WITH_ABORT_1_a : assert (always a -> next (b before a)) abort d;
 
   -- async_abort is similar to abort

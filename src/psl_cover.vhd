@@ -15,6 +15,9 @@ architecture psl of psl_cover is
 
   signal req, busy, done : std_logic;
 
+  -- All is sensitive to rising edge of clk
+  default clock is rising_edge(clk);
+
 begin
 
 
@@ -24,22 +27,19 @@ begin
   SEQ_DONE : sequencer generic map ("________-_") port map (clk, done);
 
 
-  -- All is sensitive to rising edge of clk
-  -- psl default clock is rising_edge(clk);
-
   -- Covers a transfer request
   -- This cover directive holds at cycle 1
-  -- psl COVER_0_c : cover {req}
-  --    report "Transfer requested";
+  COVER_0_c : cover {req}
+     report "Transfer requested";
 
   -- Covers started processing of transfers
   -- This cover directive holds at cycle 2
-  -- psl COVER_1_c : cover {req; {{busy[=1]} && {not done[+]}}}
-  --     report "Transfer in progress";
+  --COVER_1_c : cover {req; {{busy[=1]} && {not done[+]}}}
+  --  report "Transfer in progress";
 
   -- Covers each transfer with length in range 1 to 8
   -- This cover directive holds at cycle 8
-  -- psl COVER_2_c : cover {req; {{busy[=1 to 8]} && {not done[+]}}; done}
+  --COVER_2_c : cover {req; {{busy[=1 to 8]} && {not done[+]}}; done}
   --  report "Transfer done";
 
   -- Cover transfers with length in range 1 to 8 separately
