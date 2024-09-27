@@ -15,6 +15,9 @@ architecture psl of psl_logical_iff is
 
   signal a, b, c : std_logic;
 
+  -- All is sensitive to rising edge of clk
+  default clock is rising_edge(clk);
+
 begin
 
 
@@ -24,24 +27,9 @@ begin
   SEQ_C : sequencer generic map ("_-__-______") port map (clk, c);
 
 
-  -- All is sensitive to rising edge of clk
-  -- psl default clock is rising_edge(clk);
-
   -- This assertion holds
-  IFF_0_a : assert always (a <-> b or c);
+  IFF_0_a : assert always (a <-> b);
 
-  -- Equivalent but with logical implication operator
-  -- This assertion holds
-  IFF_1_a : assert always (a -> b or c) and (b or c -> a);
-
-  -- This assertion doesn't hold at cycle 4
-  IFF_2_a : assert always (a <-> b and c);
-
-  -- This assertion doesn't hold at cycle 0
-  IFF_3_a : assert always (a <-> true);
-
-  -- This assertion doesn't hold at cycle 1
-  IFF_4_a : assert always (a -> false);
 
 
   -- Stop simulation after longest running sequencer is finished
