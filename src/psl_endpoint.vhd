@@ -16,6 +16,8 @@ architecture psl of psl_endpoint is
   signal a, b : std_logic;
   signal c, d : std_logic;
 
+  default clock is rising_edge(clk);
+
 begin
 
 
@@ -27,7 +29,6 @@ begin
 
 
   -- All is sensitive to rising edge of clk
-  -- psl default clock is rising_edge(clk);
 
   -- only endpoint in psl comment works
   -- psl endpoint ENDPOINT_1_e is {a; b[*3]; c};
